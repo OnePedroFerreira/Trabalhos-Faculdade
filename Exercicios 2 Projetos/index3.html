@@ -4,46 +4,38 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>login</title>
 <style>
-	
 .campo {
 	background-color: white;
 }
-
+label{
+    display:block;
+}
 input:placeholder-shown {
   border-color: red;
 }
-
 input:not(:placeholder-shown) {
   border-color: green;
 }
-
-
-</style>
-
-</head>
-<body>
-
-	<h2>Login</h2>
 	
-	<fieldset class="campo">
+</style>
+</head>
 
+<body>
+<h2>Login</h2>
+	
+<fieldset class="campo">
     <form action="#", method="get">
     <label for="nome">Usuario:</label>
-
     <input class="form" type="text" name="nome" placeholder="Escreva Nome">
-
     </form>
 
     <form action="#", method="get">
     <label for="senha">Senha:</label>
-    <input class="form" type="text" name="senha" placeholder="Escreva Senha">
+    <input class="form" type="password" name="senha" placeholder="Escreva Senha" minlength="8">
     </form>
 
 <input type="submit" value="Enviar">
-
 </fieldset>
-
-
 
 </body>
 </html>
