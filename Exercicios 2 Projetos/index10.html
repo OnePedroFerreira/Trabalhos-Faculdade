@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Transição Interativa</title>
+	<style>
+	 p, h2, h3{
+	 	font-family: Calibri;
+	  }		
+
+     .hidden {
+            display: none;
+      }
+
+     span{
+            text-decoration: underline;
+            cursor: pointer;
+            color: blueviolet;
+      }
+
+     #first, #second, #third, #for, #five{
+     	background-color: #F0F4D3;
+     }
+
+	</style>
+
+</head>
+<body>
+	<h2>Antivirus Populares</h2>
+
+	<ul>
+		<li>
+
+ 		<span onClick="showPri()"><h3>Avast Free Antivírus</h3></span>
+    	<div id="first" class="hidden">
+			<p>O Avast Free Antivirus está frequentemente classificado nas melhores posições do mercado. Suas classificações são sempre tão boas que a AV-Comparative, um dos principais laboratórios independentes que testam antivírus, elegeu o Avast Free Antivirus como Produto do Ano de 2018 e como Produto Topo de Linha em 2019. Recebendo também premiações nos quesitos Proteção contra Malwares e proteção avançada contra ameaça</p>
+		</div>
+
+
+		</li>
+
+		<li>
+		<span onClick="showSeg()"><h3>AVG Antivirus FREE</h3></span>
+		<div id="second" class="hidden">
+			<p>A verificação feita pelo AVG busca Malwares ocultos, o que inclui vírus, e outros softwares maliciosos, como spywares e ransomwares. O AVG também busca por URLs maliciosas, extensões do navegador indesejáveis e problemas de desempenho do PC.</p>
+
+			<p>Ao identificar uma ameaça, seja um arquivo desconhecido ou programa suspeito, o AVG impede que sejam abertos, e os envia para o Laboratório de Ameaças da AVG, onde serão analisados profundamente, e caso sejam considerados maliciosos, será criada uma cura que será enviada tanto para você quanto para os demais usuários do AVG.</p>
+		</div>
+		</li>
+
+		<li>
+		<span onClick="showTer()"><h3>Bitdefender</h3></span>
+		<div id="third" class="hidden">
+			<p>Seus mecanismos de verificação são leves e eficientes, tendo um desempenho acima da média da indústria e tendo uma ótima definição de vírus, segundo o TechRadar. Entretanto, o mesmo site também afirma que o Bitdefender também é responsável por um consumo acima da média dos recursos do PC.</p>
+		</div>
+		</li>
+
+		<li>
+		<span onClick="showQua()"><h3>Kaspsersky Security Cloud</h3></span>
+			<div id="for" class="hidden">
+			<p>A Kaspersky conquistou ótimos resultados nos testes em laboratórios independentes, incluindo testes de bloqueio de malwares e URLs maliciosos, além de pontuação perfeita no teste de phishing, realizados pelo PCMag.</p>
+
+			<p>Entretanto foi acusado de conexões suspeitas com Kremlin, o que causou o banimento do aplicativo em agências governamentais de alguns países, como EUA e Holanda.</p>
+		</div>
+		</li>
+
+		<li>
+		<span onClick="showQui()"><h3>Microsoft Windows Security</h3></span>
+			<div id="five" class="hidden">
+			<p>Sendo um aplicativo de defesa que já vem integrado com o windows 10, o Microsoft Windows Security, ainda não é considerado um dos melhores antivírus do mercado, porém tem apresentado melhoras a cada atualização.</p>
+
+			<p>Tendo apresentado melhoras em suas capacidades de detecção de malwares, e bons desempenhos em testes práticos, o Security tem ganhado um pouco de espaço na lista, entretanto havendo alguma desconfiança.</p>
+		</div>
+		</li>
+	</ul>
+
+	    <script>
+        const showPri = () => {
+            document.getElementById("first").classList.toggle('hidden');
+        }
+
+        const showSeg = () => {
+            document.getElementById("second").classList.toggle('hidden');
+        }
+
+        const showTer = () => {
+            document.getElementById("third").classList.toggle('hidden');
+        }
+
+        const showQua = () => {
+            document.getElementById("for").classList.toggle('hidden');
+        }
+
+        const showQui = () => {
+            document.getElementById("five").classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>

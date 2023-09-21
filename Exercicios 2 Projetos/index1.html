@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alertas</title>
+<style>
+
+.atenção {
+  margin-bottom: 5px;
+  padding: 20px;
+  background-color:#FF0000;
+  color: black;
+}
+.perigo {
+  margin-bottom: 5px;
+  padding: 20px;
+  background-color:#FFFF00;
+  color: black;
+}
+.informacao {
+  margin-bottom: 5px;
+  padding: 20px;
+  background-color:#0000FF;
+  color: black;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+</style>
+</head>
+<body>
+
+<h2>Mensagens de Alerta</h2>
+
+<div class="atenção">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <strong>Atenção</strong>
+</div>
+
+<div class="perigo">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <strong>Perigo</strong>
+</div>
+
+<div class="informacao">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <strong>Infomação</strong>
+</div>
+
+</body>
+</html>
