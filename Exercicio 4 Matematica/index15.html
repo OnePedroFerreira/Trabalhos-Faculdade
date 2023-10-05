@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Juros</title>
+</head>
+<body>
+
+<h2>Juros</h2>
+
+<div id="resultado"></div>
+
+<script>
+	var valor = 1000;
+	var mes = 6;
+	var juros = 5;
+
+	var resultado = ((valor/100)*juros)*mes;
+
+	document.getElementById('resultado').innerHTML = "Ira pagar a mais: "+ resultado;
+
+</script>
+</body>
+</html>

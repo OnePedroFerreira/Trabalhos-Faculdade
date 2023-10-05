@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Comparação de Valores</title>
+</head>
+<body>
+
+<h2>Comparação</h2>
+
+<div id="resultado"></div>
+
+<script>
+    var rlag = 15;
+    var ralt = 10;
+    var tlag = 30;
+    var talt = 10;
+
+	var primeiro = rlag * ralt;
+	var segundo = (tlag * talt)/2
+
+
+	if (primeiro > segundo){
+	document.getElementById('resultado').innerHTML = "O maior e o retangulo com: "+ primeiro;
+
+	} else if (primeiro < segundo){
+	document.getElementById('resultado').innerHTML = "O maior e o triangulo com: "+ segundo;
+	} else {
+	document.getElementById('resultado').innerHTML = "Os dois são iguais";
+	}
+
+//var min = parseInt(document.getElementById('valor1').value);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Desconto</title>
+</head>
+<body>
+
+<h2>Desconto</h2>
+
+<div id="resultado"></div>
+
+<script>
+	var valor = 150;
+	var desc = 10;
+
+	var resultado = valor - ((valor/100)*desc)
+
+	document.getElementById('resultado').innerHTML = "Com desconto pagara: "+ resultado;
+
+</script>
+</body>
+</html>
