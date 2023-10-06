@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desconto</title>
+</head>
+<body>
+
+<h2>Descontos</h2>
+
+<form action="" method="post">
+  <label>Valor da Compra</label>
+  <input type="text" id="valor" value="1" placeholder="Digite o total de gastos" /> <br>
+</form>
+
+<button id="calculobtn" style="margin: 10px;">Calcular</button>
+
+<div id="desconto"></div>
+<div id="resultado"></div>
+
+<script type="text/javascript">
+document.getElementById("calculobtn").addEventListener("click", calcular);
+
+function calcular() {
+  let valor = parseInt(document.getElementById('valor').value, 10);
+  let desconto = 0;
+
+  if (valor >= 100 && valor < 500) {
+    desconto = (valor * 10) / 100;
+  } else if (valor >= 500) {
+    desconto = (valor * 20) / 100;
+  }
+
+  let resultado = valor - desconto;
+
+  document.getElementById('desconto').textContent = "O desconto foi de R$" + desconto;
+  document.getElementById('resultado').textContent = "Resultado: R$" + resultado;
+}
+</script>  
+</body>
+</html>
