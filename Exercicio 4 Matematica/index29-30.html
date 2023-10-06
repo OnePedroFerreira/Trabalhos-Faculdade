@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dias da Semana</title>
+</head>
+<body>
+
+<h2>Semana</h2>
+
+<div id="resultado"></div>
+
+<script>
+    
+let dia = 2;
+let feira = "-feira"
+
+switch (dia) { // ativa o switch
+
+    case 1:
+        document.getElementById('resultado').innerHTML = "Domingo";
+        break;
+    case 2:
+        document.getElementById('resultado').innerHTML = "Segunda"+ feira;
+        break;
+    case 3:
+        document.getElementById('resultado').innerHTML = "Terça"+ feira;
+        break;
+    case 4:
+        document.getElementById('resultado').innerHTML = "Quarta"+ feira;
+        break;
+    case 5:
+        document.getElementById('resultado').innerHTML = "Quinta"+ feira;
+        break;
+    case 6:
+        document.getElementById('resultado').innerHTML = "Sexta"+ feira;
+        break;
+    case 7:
+        document.getElementById('resultado').innerHTML = "Sabado";
+        break;
+
+}
+</script>
+</body>
+</html>
