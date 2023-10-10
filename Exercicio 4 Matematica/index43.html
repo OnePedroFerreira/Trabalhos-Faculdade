@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        *{
+            font-family: 'Roboto', sans-serif;
+            color: #073763;
+        }
+
+        #btntroca {
+            position: absolute;
+            top: 10px;
+            left: 230px;
+            padding: 5px 10px;
+            background-color:#706F6F;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin:20px;
+            display: block;
+        }
+        .botao{
+            width: 25px;
+            height: 25px;
+            font-size: 15px;
+            margin: 1px;
+            border-radius: 10%;
+
+            cursor: pointer;
+            background-color:#E25435;
+            border: none;
+            color: #fff;
+        }
+
+
+        .outros{
+            float:left;
+        }
+
+        #outro {
+            display: none;
+        }
+        #resultado1{
+            background-color: whitesmoke;
+        }
+
+        fieldset{
+            background-color: #F5B6A8;
+        }
+        table{
+            text-align: center;
+            vertical-align: middle;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <button id="btntroca" onclick="trocaCal()">Calculadora</button>
+
+<div class="outros">
+    <fieldset id="calcula">
+    <legend>Calculadora</legend>
+        <form onsubmit="return calcular()">
+            <input type="text" id="resultado" name="resultado" placeholder="Digite a expressão" required>
+            <input type="submit" value="=">
+        </form><br>
+
+        <label style="font-size:15px">Use "* para multiplicar,<br> "/" para dividir e<br> "%" para obter o resto</label>
+    </fieldset>
+
+    <fieldset id="outro">
+    <legend style="margin:5px;">Calculadora Dois</legend>
+        <p id="resultado1" ></p>
+    <table>
+        <tr>
+            <td><button class="botao" onclick="limpa()">C</button></td>
+            <td><button class="botao" onclick="volta()"><</button></td>
+            <td><button class="botao" onclick="insert('/')">/</button></td>
+            <td><button class="botao" onclick="insert('*')">x</button></td>
+        </tr>
+        <tr>
+            <td><button class="botao" onclick="insert('7')">7</button></td>
+            <td><button class="botao" onclick="insert('8')">8</button></td>
+            <td><button class="botao" onclick="insert('9')">9</button></td>
+            <td><button class="botao" onclick="insert('-')">-</button></td>
+        </tr>
+        <tr>
+            <td><button class="botao" onclick="insert('4')">4</button></td>
+            <td><button class="botao" onclick="insert('5')">5</button></td>
+            <td><button class="botao" onclick="insert('6')">6</button></td>
+            <td><button class="botao" onclick="insert('+')">+</button></td>
+        </tr>
+        <tr>
+            <td><button class="botao" onclick="insert('1')">1</button></td>
+            <td><button class="botao" onclick="insert('2')">2</button></td>
+            <td><button class="botao" onclick="insert('3')">3</button></td>
+            <td rowspan="2"><button class="botao" onclick="acerta()" style="height:55px;">=</button></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button class="botao" onclick="insert('0')" style="width:55px;">0 </button> </td>
+            <td><button class="botao" onclick="insert('.')">.</button></td>
+        </tr>
+    </table>
+    </fieldset>
+</div>
+
+    <script>
+    let calculaVisivel = true;
+//troca entre estilo de calculadora
+    function trocaCal() {
+         const calcula = document.getElementById('calcula');
+         const outro = document.getElementById('outro');
+         const btntroca = document.getElementById('btntroca');
+
+        if (calculaVisivel) {
+            calcula.style.display = 'none';
+            outro.style.display = 'block';
+            btntroca.textContent = 'Calculadora Form';
+         } else {
+            calcula.style.display = 'block';
+            outro.style.display = 'none';
+            btntroca.textContent = 'Calculadora Display';
+         }
+
+            calculaVisivel = !calculaVisivel;
+        }
+
+//caculadora em form, calculo
+    function calcular() {
+        let resultado = document.getElementById('resultado').value;
+        try {
+            resultado = eval(resultado);
+            document.getElementById('resultado').value = resultado;
+            return false; 
+        } catch (error) {
+            document.getElementById('resultado').value = "Erro";
+            return false; 
+            }
+        }
+
+
+//calculadora em display, limpa, calcula, coleta e insere.
+    function limpa(){
+        document.getElementById('resultado1').innerHTML = "";
+    }
+    
+    function insert(num){
+        let numero = document.getElementById('resultado1').innerHTML;
+        document.getElementById('resultado1').innerHTML = numero +num;
+    }
+
+    function volta(){
+        var resul = document.getElementById('resultado1').innerHTML;
+        document.getElementById('resultado1').innerHTML = resul.substring(0, resul.length -1);
+    }
+
+    function acerta(){
+        var resul = document.getElementById('resultado1').innerHTML;
+        if(resultado){
+            document.getElementById('resultado1').innerHTML = eval(resul);
+        }else{
+            document.getElementById('resultado1').innerHTML = "Nada";
+        }
+    }
+    </script>
+</body>
+</html>

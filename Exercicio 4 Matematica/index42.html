@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viajando Pelo Espaço</title>
+
+<style>
+  *{
+   font-family: 'Roboto', sans-serif;
+  }
+
+  label, select, input, button {
+    padding: 5px;
+    margin: 5px;
+  }
+
+</style>
+
+</head>
+<body>
+
+<form>
+<fieldset>
+<legend style="font-size: 23px;">Viagem Espacial</legend>
+
+<label for="planetas">Escolha o planeta de destino:
+    <select id="planeta">  <!-- E melhor com seletor do que radio nesse caso -->
+        <option value="Mercúrio">Mercúrio</option>
+        <option value="Vênus">Vênus</option>
+        <option value="Marte">Marte</option>
+        <option value="Júpiter">Júpiter</option>
+        <option value="Saturno">Saturno</option>
+        <option value="Urano">Urano</option>
+        <option value="Netuno">Netuno</option>
+        <option value="Plutão">Plutão</option>
+    </select>
+</label><br>
+
+
+<label>Velocidade da sua Nave: <input type="text" id="km" placeholder="Digite KM/h" /></label><br>
+
+<label>Nota: A velocidade da luz e de 1.079.252.849km/h.</label>
+
+</fieldset>
+</form>
+
+<button onclick="calcularTempoViagem()">Calcular Tempo de Viagem</button>
+<div id="resultado"></div>
+
+<script>
+    function calcularTempoViagem() {
+        let plaSelec = document.getElementById("planeta").value;
+        let velNave = parseInt(document.getElementById("km").value);
+
+        const dist = {
+            "Mercúrio": 77000000, // nao pode colocar virgula
+            "Vênus": 41000000,
+            "Marte": 78000000,
+            "Júpiter": 628000000,
+            "Saturno": 1275000000,
+            "Urano": 2724000000,
+            "Netuno": 4351000000,
+            "Plutão": 5906000000
+            };
+
+            const disDes = dist[plaSelec];
+
+            if (!isNaN(velNave) && disDes) {
+                const tempoV = disDes / velNave;
+                document.getElementById("resultado").innerHTML = 'Tempo estimado de viagem para ' + plaSelec + ': ' + tempoV.toFixed(3) + ' horas';
+            } else {
+                document.getElementById("resultado").innerHTML = "Por favor, insira um valor válido.";
+            }
+        }
+</script>
+    
+</body>
+</html>
