@@ -1,0 +1,66 @@
+<style>
+
+*{
+    font-family: Calibri;
+}
+
+
+.pagina{
+   display: table-cell;
+   vertical-align: middle;
+   align-items: center;
+   justify-content: space-around;
+}
+
+.menu{
+    display: inline-block; 
+    padding: 1% 5% 1% 5%; 
+    background-color: #FF746F;
+}
+
+.menu:hover{
+    background-color: red;
+}
+
+.cont{
+    margin: auto;
+    padding: auto;
+    flex: 1;
+}
+
+.lock-icon {
+     float: left;
+
+}
+
+        body{
+            background-image: url('fundo.jpg');
+        }
+
+        header{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+  
+            text-align: center; /* Centraliza os itens horizontalmente */
+        }
+        nav{
+            flex: 1;
+    
+
+        }
+        main{
+            background-color:#20B2AA;
+            flex: 2;
+
+        }
+        footer{
+            padding: 1%;
+            background-color: #CBBEB5;
+            flex:none;
+
+        }
+
+
+    </style>
