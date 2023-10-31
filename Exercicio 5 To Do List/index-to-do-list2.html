@@ -20,12 +20,12 @@
         </div>
     </div>
 
-    <script>
-        let inputBox = document.getElementById("input-box");
-        let inputDate = document.getElementById("input-date")
-        const listContainer = document.getElementById("lista-container");
+<script>
+let inputBox = document.getElementById("input-box"); //salva a nota
+let inputDate = document.getElementById("input-date"); //salva a data
+const listContainer = document.getElementById("lista-container"); //cria a lsita
 
-function addTask() {
+function addTask() { //cria a lista com as notas
     if (inputBox.value === "") {
         alert("Escreva algo.");
     } else {
@@ -33,9 +33,11 @@ function addTask() {
         let checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.checked = false; // Marcar o checkbox por padrão
+
         li.appendChild(checkbox);
         li.innerHTML += ` ${inputBox.value} - ${inputDate.value}`;
         listContainer.appendChild(li);
+
         let span = document.createElement("span");
         span.innerHTML = "\u00d7";
         li.appendChild(span);
@@ -50,27 +52,31 @@ function addTask() {
     saveData();
 }
 
+listContainer.addEventListener("click", function (e) { //faz a troca do checado e remove da lista
+    if (e.target.tagName === "INPUT") {
+        e.target.parentElement.classList.toggle("checked");
+        saveData();
+    } else if (e.target.tagName === "SPAN") {
+        e.target.parentElement.remove();
+        saveData();
+    }
+}, false);
 
-        listContainer.addEventListener("click", function (e) {
-            if (e.target.tagName === "INPUT") {
-                e.target.parentElement.classList.toggle("checked");
-                saveData();
-            } else if (e.target.tagName === "SPAN") {
-                e.target.parentElement.remove();
-                saveData();
-            }
-        }, false);
+function saveData() { //salva os dados
+    const tasks = [];
+    listContainer.querySelectorAll("input[type='checkbox']").forEach((checkbox) => {
+        tasks.push(checkbox.checked);
+    });
+    localStorage.setItem("data", listContainer.innerHTML);
+}
 
-        function saveData() {
-            const tasks = [];
-            listContainer.querySelectorAll("input[type='checkbox']").forEach((checkbox) => {
-                tasks.push(checkbox.checked);
-            });
-            localStorage.setItem("data", listContainer.innerHTML);
-        }
+function clearAllTasks() { //limpa tudo
+    listContainer.innerHTML = "";
+    saveData();
+}
 
 function showTask() {
-    if (localStorage.getItem("data")) {
+    if (localStorage.getItem("data")) { // mostra na tela
         listContainer.innerHTML = localStorage.getItem("data");
     }
 
@@ -85,45 +91,33 @@ function showTask() {
 }
 
 showTask();
-
-
     </script>
 </body>
 </html>
 
-///
 
-//Adicionei um botão "Editar" a cada tarefa na função addTask
-// Adicionar botão de edição
-let editButton = document.createElement("button");
-editButton.textContent = "Editar";
-li.appendChild(editButton);
-
-
-//Adicionei um evento de clique ao botão "Editar" para permitir a edição do texto da tarefa:
-// Adicionar evento de edição
-editButton.addEventListener("click", function () {
-    const newText = prompt("Edite a tarefa:", taskText.textContent);
-    if (newText !== null) {
-        taskText.textContent = newText;
-        saveData();
-    }
-});
-
-
-//Adicionei um botão "Excluir" a cada tarefa na função addTask:
-let removeButton = document.createElement("button");
-removeButton.textContent = "Excluir";
-li.appendChild(removeButton);
-
-
-//Adicionei um evento de clique ao botão "Excluir" para remover a tarefa:
-removeButton.addEventListener("click", function () {
-    li.remove();
-    saveData();
-});
-
-
-//Essas modificações permitem que você edite e exclua tarefas diretamente na lista de tarefas.
-//Certifique-se de que as tarefas sejam exibidas corretamente com os botões "Editar" e "Excluir"
-após adicionar uma nova tarefa.
+//  Adicionei um botão "Editar" a cada tarefa na função addTask
+//  Adicionar botão de edição
+//let editButton = document.createElement("button");
+//editButton.textContent = "Editar";
+//li.appendChild(editButton);
+//  Adicionei um evento de clique ao botão "Editar" para permitir a edição do texto da tarefa:
+//  Adicionar evento de edição
+//editButton.addEventListener("click", function () {
+//    const newText = prompt("Edite a tarefa:", taskText.textContent);
+//    if (newText !== null) {
+//        taskText.textContent = newText;
+//        saveData();
+//    }
+//});
+//  Adicionei um botão "Excluir" a cada tarefa na função addTask:
+//let removeButton = document.createElement("button");
+//removeButton.textContent = "Excluir";
+//li.appendChild(removeButton);
+//  Adicionei um evento de clique ao botão "Excluir" para remover a tarefa:
+//removeButton.addEventListener("click", function () {
+//    li.remove();
+//    saveData();
+//});
+//  Essas modificações permitem que você edite e exclua tarefas diretamente na lista de tarefas.
+//  Certifique-se de que as tarefas sejam exibidas corretamente com os botões "Editar" e "Excluir" após adicionar uma nova tarefa.
