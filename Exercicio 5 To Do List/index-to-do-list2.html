@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List 2</title>
+    <link rel="stylesheet" type="text/css" href="TDL.css" />
+</head>
+<body>
+    <div class="conteiner">
+        <div class="menu">
+            <h2>To-Do List <div id="outros"></div></h2>
+            <div class="row">
+                <input type="text" id="input-box" placeholder="Coloque sua tarefa">
+                <input type="date" id="input-date">
+                <button type="button" onclick="addTask()">Novo</button>
+            </div>
+            <ul id="lista-container">
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let inputBox = document.getElementById("input-box");
+        let inputDate = document.getElementById("input-date")
+        const listContainer = document.getElementById("lista-container");
+
+function addTask() {
+    if (inputBox.value === "") {
+        alert("Escreva algo.");
+    } else {
+        let li = document.createElement("li");
+        let checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = false; // Marcar o checkbox por padrão
+        li.appendChild(checkbox);
+        li.innerHTML += ` ${inputBox.value} - ${inputDate.value}`;
+        listContainer.appendChild(li);
+        let span = document.createElement("span");
+        span.innerHTML = "\u00d7";
+        li.appendChild(span);
+
+        checkbox.addEventListener("click", function () {
+            saveData();
+        });
+    }
+
+    inputBox.value = "";
+    inputDate.value = "";
+    saveData();
+}
+
+
+        listContainer.addEventListener("click", function (e) {
+            if (e.target.tagName === "INPUT") {
+                e.target.parentElement.classList.toggle("checked");
+                saveData();
+            } else if (e.target.tagName === "SPAN") {
+                e.target.parentElement.remove();
+                saveData();
+            }
+        }, false);
+
+        function saveData() {
+            const tasks = [];
+            listContainer.querySelectorAll("input[type='checkbox']").forEach((checkbox) => {
+                tasks.push(checkbox.checked);
+            });
+            localStorage.setItem("data", listContainer.innerHTML);
+        }
+
+function showTask() {
+    if (localStorage.getItem("data")) {
+        listContainer.innerHTML = localStorage.getItem("data");
+    }
+
+    const storedTasks = localStorage.getItem("tasks");
+    if (storedTasks) {
+        const tasks = JSON.parse(storedTasks);
+        const checkboxes = listContainer.querySelectorAll("input[type='checkbox']");
+        checkboxes.forEach((checkbox, index) => {
+            checkbox.checked = tasks[index];
+        });
+    }
+}
+
+showTask();
+
+
+    </script>
+</body>
+</html>
+
+///
+
+//Adicionei um botão "Editar" a cada tarefa na função addTask
+// Adicionar botão de edição
+let editButton = document.createElement("button");
+editButton.textContent = "Editar";
+li.appendChild(editButton);
+
+
+//Adicionei um evento de clique ao botão "Editar" para permitir a edição do texto da tarefa:
+// Adicionar evento de edição
+editButton.addEventListener("click", function () {
+    const newText = prompt("Edite a tarefa:", taskText.textContent);
+    if (newText !== null) {
+        taskText.textContent = newText;
+        saveData();
+    }
+});
+
+
+//Adicionei um botão "Excluir" a cada tarefa na função addTask:
+let removeButton = document.createElement("button");
+removeButton.textContent = "Excluir";
+li.appendChild(removeButton);
+
+
+//Adicionei um evento de clique ao botão "Excluir" para remover a tarefa:
+removeButton.addEventListener("click", function () {
+    li.remove();
+    saveData();
+});
+
+
+//Essas modificações permitem que você edite e exclua tarefas diretamente na lista de tarefas.
+//Certifique-se de que as tarefas sejam exibidas corretamente com os botões "Editar" e "Excluir"
+após adicionar uma nova tarefa.
