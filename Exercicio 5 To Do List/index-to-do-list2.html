@@ -13,7 +13,8 @@
             <div class="row">
                 <input type="text" id="input-box" placeholder="Coloque sua tarefa">
                 <input type="date" id="input-date">
-                <button type="button" onclick="addTask()">Novo</button>
+                <button type="button" class='btnNotas' onclick="addTask()">Novo</button>
+		<button type="button" class='btnNotas' onClick="clearAllTasks()">Limpa</button>
             </div>
             <ul id="lista-container">
             </ul>
@@ -42,6 +43,11 @@ function addTask() { //cria a lista com as notas
         span.innerHTML = "\u00d7";
         li.appendChild(span);
 
+	let editButton = document.createElement("button");//adciona o botao
+	editButton.classList.add('novobtn');
+	editButton.textContent = "Editar";
+	li.appendChild(editButton);
+
         checkbox.addEventListener("click", function () {
             saveData();
         });
@@ -61,6 +67,7 @@ listContainer.addEventListener("click", function (e) { //faz a troca do checado 
         saveData();
     }
 }, false);
+
 
 function saveData() { //salva os dados
     const tasks = [];
@@ -91,8 +98,6 @@ function showTask() {
 }
 
 showTask();
-
-
 
 //  Adicionei um botão "Editar" a cada tarefa na função addTask
 //  Adicionar botão de edição
