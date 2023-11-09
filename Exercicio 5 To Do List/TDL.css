@@ -47,7 +47,7 @@
         font-size: 14px;
     }
 
-    button {
+    .btnNotas {
         background-color: gray;
         border: none;
         outline: none;
@@ -56,6 +56,24 @@
         font-size: 16px;
         cursor: pointer;
         border-radius: 25px;
+    }
+    .novobtn {
+    	background-color: #9dbef2;
+        border: none;
+        outline: none;
+        padding: 3px;
+        font-size: 15px;
+        cursor: pointer;
+    	border-radius:5px;
+    	padding:3px;
+    
+    	float: right;
+    	position: relative;
+    	right:30px;
+    }
+
+    .novobtn:hover {
+    	background-color: #86a6d9;
     }
 
     ul li {
